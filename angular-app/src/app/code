@@ -1,0 +1,1 @@
+db.passwords.insertOne({"Website" : "https://facebook.com", "Description" : "Login", "Username" : "tomboz95", "password": "fakePass2342", "URL": "https://facebook.com"})
