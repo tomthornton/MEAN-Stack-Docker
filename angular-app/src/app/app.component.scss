@@ -1,0 +1,50 @@
+h2{
+  color: white;
+  font-size: 40px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-weight: 100;
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  text-shadow: 6px 2px 5px rgba(0,0,0,0.5);
+}
+header{
+  width: 100%;
+  h2{
+    float: left;
+  }
+  button{
+    position: relative;
+    float: right;
+    background: green;
+    color: black;
+    span{
+      color: whi
+    }
+    i{
+      font-size: 18px;
+      color: rgba(255,255,255,0.5);
+      position: relative;
+      right: 5px;
+      bottom: 1px;
+    }
+  }
+}
+
+
+table{
+  width: 100%;
+  td,th{
+    text-align: center;
+  }
+}
+
+tr.mat-header-row {
+  background: rgba(0,0,0,0.1);
+
+  th{
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 1px;
+  }
+}

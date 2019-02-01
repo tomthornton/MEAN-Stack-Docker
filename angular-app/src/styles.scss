@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  background-image: url('./assets/bg.jpeg');
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 20px;}
+
+.mat-sort-header-container{
+  justify-content: center;
+  position: relative;
+  left: 10px;
+}
+
+.mat-button-wrapper{
+  color: white;
+  font-weight: 100;
+}
+
+
+.mat-sort-header-button{
+  color: black !important;
+}
+
+.mat-table{
+  background: rgba(255,255,255,0.4);
+}
+
+.mat-header-row .mat-header-cell:not(:last-child), .mat-row .mat-cell:not(:last-child) {
+}
+
+.mat-header-row .mat-header-cell, .mat-cell{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.mat-header-row{
+  background: rgba(255, 255, 255, 1) !important;
+}
