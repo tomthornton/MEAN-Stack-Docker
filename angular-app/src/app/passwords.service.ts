@@ -22,6 +22,7 @@ export class PasswordsService {
       )
       .pipe(map((postData) => {
         return postData.passwords.map(post => {
+          console.log(post);
           return {
             website: post.website,
             description: post.description,
@@ -71,13 +72,12 @@ export class PasswordsService {
     this.http
       .put<{ message: string, postId: string }>('http://localhost:3000/api/passwords', post)
       .subscribe(responseData => {
-        const id = responseData.postId;
-        post.id = id;
-        this.passwordsUpdated.next([...this.passwords]);
+        this.getPasswords();
       });
   }
 
   deletePassword(postId: string) {
+    console.log(postId);
     this.http.delete('http://localhost:3000/api/passwords/' + postId)
       .subscribe(() => {
         const updatedPosts = this.passwords.filter(post => post.id !== postId);

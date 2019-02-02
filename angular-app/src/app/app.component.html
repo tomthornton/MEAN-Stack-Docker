@@ -1,6 +1,6 @@
 <header class="app-header">
   <h2 class='app-title'>passwords</h2>
-  <button matTooltip="Add Password" mat-mini-fab class='new-password-button' color='blue' (click)="newPassword()">
+  <button matTooltip="Add Password" [matTooltipPosition]="position.value" mat-mini-fab class='new-password-button' color='blue' (click)="newPassword()">
     <mat-icon>
       add
     </mat-icon>

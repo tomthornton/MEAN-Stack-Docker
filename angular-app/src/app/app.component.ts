@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Inject} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { MatSort, MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
+import { MatSort, MatTableDataSource, MatDialog, MatSnackBar, TooltipPosition} from '@angular/material';
 
 import { Password } from './password.model';
 import { PasswordsService } from '../app/passwords.service';
@@ -25,7 +26,12 @@ export class AppComponent implements OnInit {
   private passSub: Subscription;
 
   passwords = new MatTableDataSource(this.data);
+
+
   displayedColumns: string[] = ['id', 'website', 'description', 'URL', 'username', 'password'];
+
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[4]);
 
   constructor(public passwordsService: PasswordsService, private dialog: MatDialog, private alert: MatSnackBar) { }
 
@@ -76,6 +82,7 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.function === 'delete') {
+        console.log(result);
         this.passwordsService.deletePassword(result.id);
         this.alert.open('Password Deleted', '', {duration: 1500, panelClass: ['snack-alert']});
       } else {
@@ -86,9 +93,8 @@ export class AppComponent implements OnInit {
               result.URL,
               result.username,
               result.password);
+            this.alert.open('Password Updated', '', {duration: 1500, panelClass: ['snack-alert']});
       }
-
-
       });
   }
 
@@ -101,7 +107,7 @@ export class AppComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(el);
 
-    this.alert.open("' " + text + " ' copied to clipboard", '', {duration: 1500, panelClass: ['snack-alert']});
+    this.alert.open(  + text + ' copied to clipboard', '', {duration: 1500, panelClass: ['snack-alert']});
   }
 
 
