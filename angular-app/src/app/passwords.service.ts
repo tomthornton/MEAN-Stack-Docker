@@ -60,6 +60,23 @@ export class PasswordsService {
       });
   }
 
+  updatePassword(iD: string, website: string, description: string, URL: string, username: string, password: string) {
+    const post: Password = {
+      id: iD,
+      website: website,
+      description: description,
+      URL : URL ,
+      username : username,
+      password : password };
+    this.http
+      .put<{ message: string, postId: string }>('http://localhost:3000/api/passwords', post)
+      .subscribe(responseData => {
+        const id = responseData.postId;
+        post.id = id;
+        this.passwordsUpdated.next([...this.passwords]);
+      });
+  }
+
   deletePassword(postId: string) {
     this.http.delete('http://localhost:3000/api/passwords/' + postId)
       .subscribe(() => {

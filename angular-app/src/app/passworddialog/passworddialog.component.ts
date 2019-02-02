@@ -23,11 +23,26 @@ export class PasswordDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  addPassword() {
-    if (this.data.website && this.data.description && this.data.username && this.data.password) {
+  buttonRouter(name) {
+    if (name === 'add') {
+      if (this.data.website && this.data.description && this.data.username && this.data.password) {
+        this.data.function = name;
+        this.dialogRef.close(this.data);
+      } else {
+        this.message = 'All required fields must be completed';
+      }
+    } else if (name === 'delete') {
+      this.data.function = name;
       this.dialogRef.close(this.data);
+
     } else {
-      this.message = 'All required fields must be completed';
+      this.data.function = name;
+      if (this.data.website && this.data.description && this.data.username && this.data.password) {
+        this.data.function = name;
+        this.dialogRef.close(this.data);
+      } else {
+        this.message = 'All required fields must be completed';
+      }
     }
   }
 }
