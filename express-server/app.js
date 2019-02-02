@@ -32,7 +32,7 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
   next();
 });
@@ -53,6 +53,22 @@ app.post("/api/passwords", (req, res, next) => {
   });
 });
 
+app.put("/api/passwords", (req, res, next) => {
+  const post = new Password({
+    website: req.body.website,
+    description: req.body.description,
+    URL: req.body.URL,
+    username: req.body.username,
+    password: req.body.password,
+  });
+  Password.where({_id: req.id }).update(req).then(createdPost => {
+    res.status(201).json({
+      message: "Password added successfully",
+      postId: createdPost._id
+    });
+  });
+});
+
 app.get("/api/passwords", (req, res, next) => {
   Password.find().then(documents => {
     res.status(200).json({
@@ -64,7 +80,6 @@ app.get("/api/passwords", (req, res, next) => {
 
 app.delete("/api/passwords/:id", (req, res, next) => {
   Password.deleteOne({ _id: req.params.id }).then(result => {
-    console.log(result);
     res.status(200).json({ message: "Password deleted!" });
   });
 });

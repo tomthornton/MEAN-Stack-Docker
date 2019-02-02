@@ -7,7 +7,9 @@ import { MatTableModule,
          MatIconModule,
          MatDialogModule,
          MatDialog,
-         MatInputModule
+         MatInputModule,
+         MatSnackBarModule,
+         MatTooltipModule
          } from '@angular/material';
 
 
@@ -34,7 +36,9 @@ import { PasswordDialogComponent } from './passworddialog/passworddialog.compone
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   entryComponents: [PasswordDialogComponent],
   providers: [],
