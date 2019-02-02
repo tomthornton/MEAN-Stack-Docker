@@ -59,3 +59,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 20
 .mat-dialog-title{
   margin-bottom: 35px !important;
 }
+
+.mat-tooltip {
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 11px;
+  background: rgba(0,0,0,0.8);
+  position: relative;
+  bottom: 2px;
+  left: 5px;
+}

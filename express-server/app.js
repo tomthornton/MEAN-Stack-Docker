@@ -54,19 +54,19 @@ app.post("/api/passwords", (req, res, next) => {
 });
 
 app.put("/api/passwords", (req, res, next) => {
-  const post = new Password({
+  const post = ({
     website: req.body.website,
     description: req.body.description,
     URL: req.body.URL,
     username: req.body.username,
     password: req.body.password,
   });
-  Password.where({_id: req.id }).update(req).then(createdPost => {
-    res.status(201).json({
-      message: "Password added successfully",
-      postId: createdPost._id
-    });
-  });
+  console.log(post)
+  console.log(req.body);
+  Password.findOneAndUpdate({_id: req.body.id}, post, function(err, doc){
+    if (err) return res.status(500).send({ message: err , postId: req.body._id});
+    return res.status(201).send({message: 'successfully saved!', postId: req.body._id});
+});
 });
 
 app.get("/api/passwords", (req, res, next) => {
@@ -79,6 +79,7 @@ app.get("/api/passwords", (req, res, next) => {
 });
 
 app.delete("/api/passwords/:id", (req, res, next) => {
+  console.log(req.params)
   Password.deleteOne({ _id: req.params.id }).then(result => {
     res.status(200).json({ message: "Password deleted!" });
   });
