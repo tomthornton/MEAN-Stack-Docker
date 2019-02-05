@@ -1,3 +1,5 @@
-express-server/node_modules
+node-server/node_modules
 angular-app/node_modules
 test-server
+mongo-database
+mean-stack-docker.code-workspace
