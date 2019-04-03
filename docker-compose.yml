@@ -6,9 +6,11 @@ services:
   build: angular-app # specify the directory of the Dockerfile
   ports:
   - "4200:4200" # specify port mapping
+  volumes:
+  - ./angular-app:/usr/src/app
  
  express: # name of the second service
-  build: express-server # specify the directory of the Dockerfile
+  build: node-server # specify the directory of the Dockerfile
   ports:
   - "3000:3000" #specify ports mapping
   links:
